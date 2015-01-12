@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="El Tucu" />
+    <meta name="description" content="Page with the form to send the information" />
+    <meta name="viewport" content="initial-scale=1,width=1200" />
+    <title>Sign Up</title>
+</head>
+<body>
+    <form action="/my-handling-form-page" method="post">
+        <div>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" />
+        </div>
+        <div>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" />
+        </div>
+        <div>
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" />
+        </div>
+        <div>
+            <label for="birthday">Birthday:</label>
+            <input type="date" name="birthday" min="1915-01-01" max="1997-12-31" id="birthday" />
+        </div>
+        <div>
+            <label for="sport">Favorite Sport:</label>
+            <select id="sport" title="Select one...">
+                <option>Soccer</option>
+                <option>Basket</option>
+                <option>Tennis</option>
+                <option>Swimming</option>
+            </select>
+        </div>
+        <div>
+            <label for="biography">Small bio:</label>
+            <textarea id="biography"></textarea>
+        </div>
+        <div class="button">
+            <button type="submit">Send</button>
+            <button type="reset">Clear</button>
+        </div>
+    </form>
+</body>
+</html>
