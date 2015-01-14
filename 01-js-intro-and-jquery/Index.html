@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="El Tucu" />
+    <meta name="description" content="pictures information" />
+    <title>Index</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <section id="msgHide" style="display:none;">
+        Hello World!!
+    </section>
+    <input type="text" class="alias" name="txtAlias" value=" " id="txtAlias" />
+    <input type="button" name="button" id="btnAlias" value="ingresar alias" />
+    <h1>Busqueda Discos</h1>
+    <input type="text" class="alias" name="txtQuery" value=" " id="txtQuery" />
+    <input type="button" name="btnSearch" id="btnSearch" value="Buscar" />
+    <div id="result">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.3.min.js"><\/script>')</script>
+    <script>
+        $(document).ready(function () {
+            $("#msgHide").fadeIn(3000);
+            $("#msgHide").fadeIn("slow", function() {
+                $("#txtAlias").focus();
+            });
+
+            $("#btnAlias").click(function () {
+                var url = 'http://bootcamp.aws.af.cm/welcome/' + $("#txtAlias").val();
+                $.get(url, function (data) {
+                    //                    alert("Load was performed.");
+                })
+                    .done(function (data) {
+                        $("#msgHide").html(data.response);
+                    })
+                    .fail(function (data) {
+                        $("#msgHide").html("error");
+                        $("#msgHide").css('background-color', 'red');
+                    });
+            });
+
+            $("#btnSearch").click(function () {
+                $.ajax({
+                    url: "https://api.spotify.com/v1/search",
+                    type: "get", //send it through get method
+                    data: { q: $("#txtQuery").val(), type: 'album' },
+                    success: function (response) {
+                        renderAlbumInfo(response);
+                    },
+                    error: function (xhr) {
+                        //Do Something to handle error
+                    }
+                });
+            });
+
+            function renderAlbumInfo(data) {
+                $.each( data.albums.items, function (index, element) {
+                    var information = "<span class=\"item\">Album Name:<label class=\"NameAlbum\">" + element.name +
+                        "</label><br />Type:<label class=\"TypeAlbum\">" + element.album_type +
+                        "</label><img class=\"ImgAlbum\" alt=\"not fount\" src=\"" + element.images[0].url + "\" width=100px; height=100px; /></span>";
+                    $("#result").append(information);
+                });
+            }
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>

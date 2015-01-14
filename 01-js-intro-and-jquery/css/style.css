@@ -1,0 +1,25 @@
+﻿body {
+}
+section {
+    text-align:center;
+}
+
+span {
+display:block;
+}
+
+#result img {
+width:100px;
+height:100px;
+float:right;
+}
+
+ul {
+display:block;
+}
+#result span {
+    margin:5px;
+    float:left;
+    width:250px;
+    height:200px;
+}
