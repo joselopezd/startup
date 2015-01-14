@@ -61,7 +61,7 @@
                 $.each( data.albums.items, function (index, element) {
                     var information = "<span class=\"item\">Album Name:<label class=\"NameAlbum\">" + element.name +
                         "</label><br />Type:<label class=\"TypeAlbum\">" + element.album_type +
-                        "</label><img class=\"ImgAlbum\" alt=\"not fount\" src=\"" + element.images[0].url + "\" width=100px; height=100px; /></span>";
+                        "</label><img class=\"ImgAlbum\" alt=\"not fount\" src=\"" + element.images[0].url + "\" /></span>";
                     $("#result").append(information);
                 });
             }
