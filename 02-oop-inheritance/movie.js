@@ -4,6 +4,7 @@
         duration: (duration || 0)
     };
     this.observers = new ObserverList();
+    this.actors = [];
             
     function play() {
     };
@@ -14,12 +15,16 @@
     function set(strName, duration) {
     };
 
+    function download(strName) {
+    };
+
     // Reveal public pointers to
     // private functions and properties
     return {
         playing: play,
         stopped: stop,
-        addMovie: set
+        addMovie: set,
+        downloading: download
     };
 }
       
@@ -47,6 +52,16 @@ MyMovie.prototype = {
 
     get: function (strName) {
         console.log("getting movie " + this.attributes.title);
+    },
+
+    DownloadableMovie: function (strName) {
+        MyMovie.prototype.download(strName);
+        console.log("downloading " + this.attributes.title);
+    },
+
+    addActor: function (actor) {
+        this.actors.push(actor);
+        console.log("adding actor");
     }
 
 };
@@ -60,8 +75,6 @@ var smurf = new MyMovie();
 smurf.addMovie('The Smurf', 156);
 smurf.playing();
 smurf.stopped();
-
-
 
 function ObserverList() {
     this.observerList = [];
@@ -97,3 +110,21 @@ ObserverList.prototype.indexOf = function (obj, startIndex) {
 ObserverList.prototype.removeAt = function (index) {
     this.observerList.splice(index, 1);
 };
+
+
+var Social = function () { };
+
+Social.prototype = {
+
+    share: function (friendName) {
+        console.log("Sharing with " + friendName);
+    },
+
+    like: function () {
+        console.log("I like it");
+    }
+};
+
+function Actor(name) {
+    this.name = name;
+}
